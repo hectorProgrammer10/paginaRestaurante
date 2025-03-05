@@ -2,6 +2,7 @@ import React, { use, useEffect } from 'react'
 import './home.css'
 import reload from '../../assets/svg/reload.svg'
 import { useState } from 'react'
+import axios from 'axios'
 function Home() {
   const [isLoading, setIsLoading] = useState(false);
 
@@ -13,44 +14,44 @@ function Home() {
   const [pedidos, setPedidos] = useState([]);
 
   useEffect(() =>{
-    const fakeData = [
-      {
-        id:1,
-        name:"Papas fritas",
-        price:100,
-        cantidad:1,
-        status:"pendiente"
-      },
-      {
-        id:2,
-        name:"Hamburguesa",
-        price:200,
-        cantidad:1,
-        status:"pendiente"
-      },
-      {
-        id:3,
-        name:"Refresco",
-        price:20,
-        cantidad:2,
-        status:"pendiente"
-      },{
-        id:4,
-        name:"Malteada",
-        price:60,
-        cantidad:1,
-        status:"pendiente"
+    let fakeData = []
+    const getOrders = () => {
+      try{
+        //const response = axios.get("http://localhost:80/api/app/ssv/getPedidos")
+        //console.log(response.data)
+        let response = [
+          {
+            id:1,
+            name:"Papas fritas",
+            price:100,
+            cantidad:1,
+          },
+          {
+            id:2,
+            name:"Hamburguesa",
+            price:200,
+            cantidad:1,
+          }
+        ]
+        fakeData = response
+      }catch(error){
+        console.log("error", error)
       }
-    ]
+    }
+    getOrders()
+
     const fakeDataWithStatus = fakeData.map((item) => {
       return {
         ...item,
         status: 'pendiente', 
       };
     });
+    
 
     setPedidos(fakeDataWithStatus);
   },[])
+
+  
 
   const confirmOrder = (id) =>{
     try{
