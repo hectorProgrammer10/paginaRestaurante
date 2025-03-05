@@ -1,0 +1,66 @@
+.colorFont{
+  color: #3C8270;
+}
+.colorBack{
+  background-color: #FBEAB7;
+}
+.colorBackWhite{
+  background-color: white;
+}
+.canva{
+  height: 100vh;
+  width: 100%;
+  padding: 1%;
+  color: #3C8270;
+  background-color: #3C8270;;
+}
+.borderR{
+  border-radius: 10px;
+  
+}
+.home-barra{
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+.home-comands{
+  padding: 10px;
+}
+.home-head{
+  text-align: center;
+  font-size:xx-large;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.home-panel{
+  margin-top: 30px;
+}
+.comands{
+  background-color: rgba(0, 0, 0, 0);
+  border: 0;
+  
+  transition: 90ms;
+}
+.comands:hover{
+  background-color: rgba(200, 200, 200, 0.9);
+}
+button{
+  cursor: pointer;
+}
+button:active{
+  transform:scale(0.6);
+}
+
+table, th, td {
+  border: 1px solid #3C8270;
+  border-collapse: collapse;
+  padding: 9px;
+}
+th, td {
+  background-color: white;
+}
+
+th:hover, td:hover{
+  background-color: rgba(200, 200, 200, 0.9);
+}
