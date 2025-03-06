@@ -15,7 +15,7 @@ function Home() {
   useEffect(() => {
     const getOrders = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/app/ssv/getPedidos");
+        const response = await axios.get("http://localhost:80/order");
         console.log(response.data);
         setPedidos(response.data.map(item => ({ ...item, status: 'pendiente' })));
       } catch (error) {
@@ -26,7 +26,7 @@ function Home() {
   }, []);
   const getOrders = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/api/app/ssv/getPedidos");
+      const response = await axios.get("http://localhost:80/order");
       console.log(response.data);
       setPedidos(response.data.map(item => ({ ...item, status: 'pendiente' })));
     } catch (error) {
@@ -38,6 +38,8 @@ function Home() {
     setPedidos((prevPedidos) =>
       prevPedidos.map((item) => (item.id === id ? { ...item, status: 'confirmado' } : item))
     );
+    const response = axios.post("localhost:80/order/confirm",{id_order:id})
+    console.log(response);
     console.log("Confirm order " + id);
   };
 
@@ -45,6 +47,8 @@ function Home() {
     setPedidos((prevPedidos) =>
       prevPedidos.map((item) => (item.id === id ? { ...item, status: 'enviado' } : item))
     );
+    const response = axios.post("localhost:80/order/send",{id_order:id})
+    console.log(response);
     console.log("Send order " + id);
   };
 
